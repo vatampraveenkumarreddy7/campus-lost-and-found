@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind - Lost and Found</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Login Page -->
+  <section class="login-page" id="loginPage">
+    <div class="login-box">
+      <h1>CampusFind</h1>
+      <p>Log in to report a lost item or manage found-item reports.</p>
+
+      <form id="loginForm">
+        <label for="role">Login as</label>
+        <select id="role" name="role" required>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <label for="loginName">Name</label>
+        <input type="text" id="loginName" name="loginName"
+          placeholder="Enter your name" required>
+
+        <label for="accountId" id="accountIdLabel">Student ID</label>
+        <input type="text" id="accountId" name="accountId"
+          placeholder="Enter your student ID" required>
+
+        <label for="loginEmail">Email Address</label>
+        <input type="email" id="loginEmail" name="loginEmail"
+          placeholder="Enter your email address" required>
+
+        <label for="password">Password (minimum 8 characters)</label>
+        <input type="password" id="password" name="password" minlength="8"
+          placeholder="Enter at least 8 characters" required>
+
+        <button class="full-width" type="submit">Log In</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Application -->
+  <div id="app">
+    <header>
+      <h2>CampusFind</h2>
+      <button type="button" id="logoutButton">Log Out</button>
+    </header>
+
+    <main class="page-content">
+
+      <!-- User page -->
+      <section class="panel" id="userDashboard">
+        <h2>Report a Lost Item</h2>
+        <p class="hint">
+          Submit details about your lost item. Only admins can see this report.
+          The admin can use your login email to contact you if a match is found.
+        </p>
+
+        <form class="report-form" id="lostItemForm">
+          <label for="lostName">Item Name</label>
+          <input type="text" id="lostName" placeholder="Example: Black wallet" required>
+
+          <label for="lostCategory">Category</label>
+          <select id="lostCategory" required>
+            <option>Wallet / Purse</option>
+            <option>Phone / Electronics</option>
+            <option>ID Card</option>
+            <option>Keys</option>
+            <option>Books</option>
+            <option>Other</option>
+          </select>
+
+          <label for="lostLocation">Where did you lose it?</label>
+          <input type="text" id="lostLocation" placeholder="Example: Central Library" required>
+
+          <label for="lostDate">Date Lost</label>
+          <input type="date" id="lostDate" required>
+
+          <label for="lostDescription">Description</label>
+          <textarea id="lostDescription"
+            placeholder="Describe the item and identifying details" required></textarea>
+
+          <button type="submit" class="form-submit">Submit Lost-Item Report</button>
+        </form>
+
+        <div class="message" id="userMessage">
+          Your report has been submitted. An admin can review it and contact you if a match is found.
+        </div>
+      </section>
+
+      <!-- Admin page -->
+      <section id="adminDashboard">
+        <section class="panel">
+          <h2>Add a Found Item</h2>
+
+          <form class="report-form" id="foundItemForm">
+            <label for="foundName">Item Name</label>
+            <input type="text" id="foundName" placeholder="Example: Black wallet" required>
+
+            <label for="foundCategory">Category</label>
+            <select id="foundCategory" required>
+              <option>Wallet / Purse</option>
+              <option>Phone / Electronics</option>
+              <option>ID Card</option>
+              <option>Keys</option>
+              <option>Books</option>
+              <option>Other</option>
+            </select>
+
+            <label for="foundLocation">Where was it found?</label>
+            <input type="text" id="foundLocation" placeholder="Example: Central Library" required>
+
+            <label for="foundDate">Date Found</label>
+            <input type="date" id="foundDate" required>
+
+            <label for="foundDescription">Description</label>
+            <textarea id="foundDescription" placeholder="Describe the found item" required></textarea>
+
+            <button type="submit" class="form-submit">Add Found Item</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>User Lost-Item Reports</h2>
+          <p class="hint">This list is visible to admins only.</p>
+          <div id="lostReportsList"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Found Items</h2>
+          <div id="foundItemsList"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 CampusFind - Lost and Found System</p>
+    </footer>
+  </div>
+
+</body>
+</html>
